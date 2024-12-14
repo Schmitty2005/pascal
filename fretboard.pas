@@ -1,4 +1,5 @@
 {$MODE DELPHI}
+
 Unit fretboard;
 
 
@@ -19,39 +20,34 @@ Function mmToInch ( mms : single) : single;
 
 Function inchTomm ( inch : single ) : single;
 
-function singleFret ( fretNumber : single = 1 ; scaleLength : single = 25.5) : single ;
+Function singleFret ( fretNumber : single = 1 ; scaleLength : single = 25.5) : single ;
 
-function markerDot (fretMarker : single = 3 ; scaleLength : single = 25.5) : single;
+Function markerDot (fretMarker : single = 3 ; scaleLength : single = 25.5) : single;
 
 
 Implementation
 
-function singleFret ( fretNumber : single = 1 ; scaleLength : single = 25.5) : single ;
-  begin  
-    result := scaleLength - (scaleLength / ( power(2,(fretNumber / 12))));
-  end;
+Function singleFret ( fretNumber : single = 1 ; scaleLength : single = 25.5) : single ;
+Begin
+  result := scaleLength - (scaleLength / ( power(2,(fretNumber / 12))));
+End;
 
-function markerDot (fretMarker : single = 3 ; scaleLength : single = 25.5) : single;
-  begin
-    result := (singleFret(fretmarker, scaleLength) + singleFret (fretmarker+1, scaleLength)) / 2;
-  end;
+Function markerDot (fretMarker : single = 3 ; scaleLength : single = 25.5) : single;
+Begin
+  result := (singleFret(fretmarker, scaleLength) + singleFret (fretmarker+1, scaleLength)) / 2;
+End;
 
 Function mmToInch ( mms : single) : single;
-Var 
-  inchDec : single;
-
 Begin
   result := mms /25.4;
 End;
 
 
 Function inchTomm ( inch : single ) : single;
-Var 
-  mms : single;
 Begin
   result :=  inch * 25.4;
 End;
 
 Begin
-  
+
 End.
