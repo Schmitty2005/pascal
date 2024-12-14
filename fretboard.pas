@@ -21,7 +21,7 @@ Function inchTomm ( inch : single ) : single;
 
 function singleFret ( fretNumber : single = 1 ; scaleLength : single = 25.5) : single ;
 
-
+function markerDot (fretMarker : single = 3 ; scaleLength : single = 25.5) : single;
 
 
 Implementation
@@ -35,6 +35,7 @@ function markerDot (fretMarker : single = 3 ; scaleLength : single = 25.5) : sin
   begin
     result := (singleFret(fretmarker, scaleLength) + singleFret (fretmarker+1, scaleLength)) / 2;
   end;
+
 Function mmToInch ( mms : single) : single;
 Var 
   inchDec : single;
