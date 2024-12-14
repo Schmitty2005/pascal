@@ -25,27 +25,27 @@ type
   private 
     isMetric : Boolean ; 
     isImperial : Boolean ;
-    mScaleLength : single ;  //need scale length in mm for default 25.5 inch = 647.7 mm
-    mNumFrets : single ;
-    mFretboard : array of single;
-    function singleFret(fret : single): single;
+    mScaleLength : real ;  //need scale length in mm for default 25.5 inch = 647.7 mm
+    mNumFrets : real ;
+    mFretboard : array of real;
+    function singleFret(fret : real): real;
     procedure CalculateArray;
     function TextOutput: wideString;
   
   public
     constructor Create ; overload;
     destructor Destroy; override;
-    procedure SetFrets (frets : single = 24);
+    procedure SetFrets (frets : real = 24);
     //procedure CalulateArray () ; 
   
   published
-    property ScaleLength : single read mScaleLength write mScaleLength default 647.7;
-    property NumFrets : single read mNumFrets write  SetFrets default 24; 
+    property ScaleLength : real read mScaleLength write mScaleLength ;//default 647.7;
+    property NumFrets : real read mNumFrets write  SetFrets ;//default 24; 
     property Metric  : Boolean  read isMetric write isMetric default true;
     Property Imperial  : Boolean read isImperial  write isImperial default false; 
   end;
 
-function TFretBoard.singleFret(fret : single): single;
+function TFretBoard.singleFret(fret : real): real;
 begin
   if isMetric then
     result := mScaleLength- (mscaleLength / ( power(2,(fret / 12))))
@@ -58,7 +58,7 @@ var
  x : Integer;
 begin
   x := 1;
-  SetLength(mFretboard, Integer(mNumFrets));
+  SetLength(mFretboard, (round(mNumFrets)) + 1 );
   while x <= mNumFrets do
     begin 
     writeln(x); 
@@ -91,7 +91,7 @@ end;
 
 
 
-procedure TFretBoard.SetFrets(frets: single);
+procedure TFretBoard.SetFrets(frets: real);
 begin
   mNumFrets := frets;
 end;
